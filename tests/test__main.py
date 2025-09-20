@@ -1,12 +1,9 @@
-"""
-Unit tests for the ``src.main`` module.
-"""
-
-from python_template import main
+from mini_projects import main
 
 
-def test__main():
+def test__main_can_be_called():
     """
-    Test the ``main`` function.
+    The entry point can be called without error.
     """
+
     main.main()

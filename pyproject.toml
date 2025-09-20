@@ -3,9 +3,9 @@ requires = ["uv_build>=0.8.2,<0.9.0"]
 build-backend = "uv_build"
 
 [project]
-name = "python-template"
+name = "mini-projects"
 version = "0.0.0"
-description = ""
+description = "All-in-one repo for mini projects."
 authors = [{name = "billwallis"}]
 readme = "README.md"
 requires-python = ">=3.13"
@@ -27,10 +27,8 @@ test = [
 required-version = ">=0.8,<1.0"
 default-groups = "all"
 
-#[tool.uv.build-backend]
-#module-name = "src"
-#module-root = ""
-#namespace = true
+[tool.uv.build-backend]
+namespace = true
 
 
 [tool.poe]
@@ -38,6 +36,7 @@ verbosity = -1
 
 [tool.poe.tasks]
 install.shell = """
+    uv sync --refresh
     pre-commit install --install-hooks
 """
 test = "uv run pytest -v"
