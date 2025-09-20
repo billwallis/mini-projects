@@ -11,6 +11,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "bidict>=0.23.1",
+    "cython>=3.1.4",
 ]
 
 [dependency-groups]
