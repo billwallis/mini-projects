@@ -9,7 +9,6 @@ Run the following command in the terminal:
 import pathlib
 
 import setuptools
-
 from Cython.Build import cythonize  # ty: ignore
 
 HERE = pathlib.Path(__file__).parent
