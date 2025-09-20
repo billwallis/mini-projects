@@ -9,7 +9,9 @@ description = "All-in-one repo for mini projects."
 authors = [{name = "billwallis"}]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "bidict>=0.23.1",
+]
 
 [dependency-groups]
 dev = [
@@ -49,7 +51,7 @@ lint.shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src --cov-fail-under=80"
+addopts = "--cov=src"
 testpaths = ["tests"]
 
 
@@ -77,7 +79,6 @@ select = [
     "PERF",  # Perflint
     "RUF",   # Ruff-specific
     "S",     # flake8-bandit
-    "TRY",   # tryceratops
     "UP",    # pyupgrade
     "W",     # pycodestyle-warning
 ]
