@@ -3,13 +3,16 @@ requires = ["uv_build>=0.8.2,<0.9.0"]
 build-backend = "uv_build"
 
 [project]
-name = "python-template"
+name = "mini-projects"
 version = "0.0.0"
-description = ""
+description = "All-in-one repo for mini projects."
 authors = [{name = "billwallis"}]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "bidict>=0.23.1",
+    "cython>=3.1.4",
+]
 
 [dependency-groups]
 dev = [
@@ -27,10 +30,8 @@ test = [
 required-version = ">=0.8,<1.0"
 default-groups = "all"
 
-#[tool.uv.build-backend]
-#module-name = "src"
-#module-root = ""
-#namespace = true
+[tool.uv.build-backend]
+namespace = true
 
 
 [tool.poe]
@@ -38,6 +39,7 @@ verbosity = -1
 
 [tool.poe.tasks]
 install.shell = """
+    uv sync --refresh
     pre-commit install --install-hooks
 """
 test = "uv run pytest -v"
@@ -50,7 +52,7 @@ lint.shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src --cov-fail-under=80"
+addopts = "--cov=src"
 testpaths = ["tests"]
 
 
@@ -78,7 +80,6 @@ select = [
     "PERF",  # Perflint
     "RUF",   # Ruff-specific
     "S",     # flake8-bandit
-    "TRY",   # tryceratops
     "UP",    # pyupgrade
     "W",     # pycodestyle-warning
 ]
