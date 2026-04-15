@@ -9,15 +9,19 @@ import os
 import random
 import time
 
-IO_LIMIT = 8  # TODO: Add usage via semaphore
+IO_LIMIT = 2
 CPU_LIMIT = os.cpu_count()
 NOW = datetime.datetime.now
 
 
-async def do_io_bound_work__async(task_id: int) -> None:
-    print(f"\tDoing work for task {task_id}...")
-    await asyncio.sleep(random.randrange(0, 5))  # noqa: S311
-    print(f"\tFinished work for task {task_id}!")
+async def do_io_bound_work__async(
+    semaphore: asyncio.Semaphore,
+    task_id: int,
+) -> None:
+    async with semaphore:
+        print(f"\tDoing work for task {task_id}...")
+        await asyncio.sleep(random.randrange(0, 5))  # noqa: S311
+        print(f"\tFinished work for task {task_id}!")
 
 
 def do_io_bound_work__sync(task_id: int) -> None:
@@ -34,28 +38,33 @@ def do_cpu_bound_work(task_id: int) -> None:
 
 async def main() -> int:
     # Async IO work
-    print(f"Doing async IO work  ({NOW()})")
+    print(f"Doing async IO work with {IO_LIMIT} threads  ({NOW()})")
     s = time.perf_counter()
-    tasks = [asyncio.create_task(do_io_bound_work__async(i)) for i in range(5)]
+    semaphore = asyncio.Semaphore(IO_LIMIT)
+    tasks = [
+        asyncio.create_task(do_io_bound_work__async(semaphore, i))
+        for i in range(5)
+    ]
     await asyncio.gather(*tasks, return_exceptions=True)
     print(
-        f"Async IO work took {time.perf_counter() - s:.2f} seconds ({NOW()})\n"
+        f"Async IO work took {time.perf_counter() - s:.2f} seconds  ({NOW()})\n"
     )
 
     # Sync IO work
-    print(f"Doing sync IO work ({NOW()})")
+    print(f"Doing sync IO work  ({NOW()})")
     s = time.perf_counter()
+    # TODO: how can we use a semaphore here?
     async with asyncio.TaskGroup() as tg:
         [
             tg.create_task(asyncio.to_thread(do_io_bound_work__sync, i))
             for i in range(5)
         ]
     print(
-        f"Sync IO work took {time.perf_counter() - s:.2f} seconds ({NOW()})\n"
+        f"Sync IO work took {time.perf_counter() - s:.2f} seconds  ({NOW()})\n"
     )
 
     # CPU work
-    print(f"Doing CPU work with {CPU_LIMIT} processes ({NOW()})")
+    print(f"Doing CPU work with {CPU_LIMIT} processes  ({NOW()})")
     s = time.perf_counter()
     loop = asyncio.get_running_loop()
     with concurrent.futures.ProcessPoolExecutor(
@@ -66,7 +75,7 @@ async def main() -> int:
             for i in range(5)
         ]
         await asyncio.gather(*tasks, return_exceptions=True)
-    print(f"CPU work took {time.perf_counter() - s:.2f} seconds ({NOW()})")
+    print(f"CPU work took {time.perf_counter() - s:.2f} seconds  ({NOW()})")
 
     return 0
 
