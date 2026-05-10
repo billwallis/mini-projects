@@ -21,6 +21,5 @@ All-in-one repo for mini projects.
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then install the dependencies:
 
 ```bash
-uv sync
-poe install
+uvx --from poethepoet poe install
 ```
