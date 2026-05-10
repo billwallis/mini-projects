@@ -40,7 +40,6 @@ exclude = ["src/__pycache__"]
 #character-encoding = {workspace = true}
 #character-replacer = {workspace = true}
 #collatz = {workspace = true}
-#cython-example = {workspace = true}
 #memoisation = {workspace = true}
 
 [tool.uv.build-backend]
@@ -57,7 +56,7 @@ install.shell = """
     uv run pre-commit install --install-hooks
 """
 upgrade.shell = """
-    uv sync --refresh --upgrade
+    uv sync --all-packages --refresh --upgrade
     uv run pre-commit autoupdate
 """
 test = "uv run pytest -vvv"
