@@ -11,10 +11,6 @@ description = "All-in-one repo for mini projects."
 authors = [{name = "billwallis"}]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "bidict>=0.23.1",
-    "cython>=3.1.4",
-]
 
 [dependency-groups]
 dev = [
@@ -31,6 +27,20 @@ test = [
 required-version = ">=0.8"
 default-groups = "all"
 
+[tool.uv.workspace]
+members = ["src/*"]
+exclude = ["src/__pycache__"]
+
+#[tool.uv.sources]
+#ackermann-function = {workspace = true}
+#async-stuff = {workspace = true}
+#base-64-encoding = {workspace = true}
+#character-encoding = {workspace = true}
+#character-replacer = {workspace = true}
+#collatz = {workspace = true}
+#cython-example = {workspace = true}
+#memoisation = {workspace = true}
+
 [tool.uv.build-backend]
 namespace = true
 
@@ -41,7 +51,7 @@ envfile.optional = ".env"
 
 [tool.poe.tasks]
 install.shell = """
-    uv sync --refresh
+    uv sync --all-packages --refresh
     uv run pre-commit install --install-hooks
 """
 upgrade.shell = """

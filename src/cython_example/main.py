@@ -5,7 +5,7 @@ Test runtime differences with between C and Python.
 import dis
 import timeit
 
-from src.cython import (
+from src.cython_example import (
     cythonisation,  # ty: ignore
     pure_python,
 )
