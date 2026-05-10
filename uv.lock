@@ -2,6 +2,34 @@ version = 1
 revision = 3
 requires-python = ">=3.13"
 
+[manifest]
+members = [
+    "ackermann-function",
+    "async-stuff",
+    "base-64-encoding",
+    "character-encoding",
+    "character-replacer",
+    "collatz",
+    "cython-example",
+    "memoisation",
+    "mini-projects",
+]
+
+[[package]]
+name = "ackermann-function"
+version = "0.0.0"
+source = { virtual = "src/ackermann_function" }
+
+[[package]]
+name = "async-stuff"
+version = "0.0.0"
+source = { virtual = "src/async_stuff" }
+
+[[package]]
+name = "base-64-encoding"
+version = "0.0.0"
+source = { virtual = "src/base_64_encoding" }
+
 [[package]]
 name = "bidict"
 version = "0.23.1"
@@ -19,6 +47,27 @@ sdist = { url = "https://files.pythonhosted.org/packages/11/74/539e56497d9bd1d48
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c5/55/51844dd50c4fc7a33b653bfaba4c2456f06955289ca770a5dbd5fd267374/cfgv-3.4.0-py2.py3-none-any.whl", hash = "sha256:b7265b1f29fd3316bfcd2b330d63d024f2bfd8bcb8b0272f8e19a504856c48f9", size = 7249, upload-time = "2023-08-12T20:38:16.269Z" },
 ]
+
+[[package]]
+name = "character-encoding"
+version = "0.0.0"
+source = { virtual = "src/character_encoding" }
+dependencies = [
+    { name = "bidict" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "bidict", specifier = ">=0.23.1" }]
+
+[[package]]
+name = "character-replacer"
+version = "0.0.0"
+source = { virtual = "src/character_replacer" }
+
+[[package]]
+name = "collatz"
+version = "0.0.0"
+source = { virtual = "src/collatz" }
 
 [[package]]
 name = "colorama"
@@ -112,6 +161,17 @@ wheels = [
 ]
 
 [[package]]
+name = "cython-example"
+version = "0.0.0"
+source = { virtual = "src/cython_example" }
+dependencies = [
+    { name = "cython" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "cython", specifier = ">=3.1.4" }]
+
+[[package]]
 name = "distlib"
 version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
@@ -148,13 +208,14 @@ wheels = [
 ]
 
 [[package]]
+name = "memoisation"
+version = "0.0.0"
+source = { virtual = "src/memoisation" }
+
+[[package]]
 name = "mini-projects"
 version = "0.0.0"
 source = { editable = "." }
-dependencies = [
-    { name = "bidict" },
-    { name = "cython" },
-]
 
 [package.dev-dependencies]
 dev = [
@@ -167,10 +228,6 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "bidict", specifier = ">=0.23.1" },
-    { name = "cython", specifier = ">=3.1.4" },
-]
 
 [package.metadata.requires-dev]
 dev = [
