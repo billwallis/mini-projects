@@ -1,8 +1,0 @@
-# yaml-language-server: $schema=https://json.schemastore.org/pyproject.json
-
-[project]
-name = "cython-example"
-version = "0.0.0"
-dependencies = [
-    "cython>=3.1.4",
-]
