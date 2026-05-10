@@ -35,7 +35,6 @@ exclude = ["src/__pycache__"]
 
 #[tool.uv.sources]
 #ackermann-function = {workspace = true}
-#async-stuff = {workspace = true}
 #base-64-encoding = {workspace = true}
 #character-encoding = {workspace = true}
 #character-replacer = {workspace = true}
