@@ -5,7 +5,6 @@ requires-python = ">=3.13"
 [manifest]
 members = [
     "ackermann-function",
-    "async-stuff",
     "base-64-encoding",
     "character-encoding",
     "character-replacer",
@@ -18,11 +17,6 @@ members = [
 name = "ackermann-function"
 version = "0.0.0"
 source = { virtual = "src/ackermann_function" }
-
-[[package]]
-name = "async-stuff"
-version = "0.0.0"
-source = { virtual = "src/async_stuff" }
 
 [[package]]
 name = "base-64-encoding"
