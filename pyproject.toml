@@ -12,7 +12,14 @@ authors = [{name = "billwallis"}]
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "ackermann_function",
+    "base_64_encoding",
+    "character_encoding",
+    "character_replacer",
+    "collatz",
+    "memoisation",
+]
 
 [dependency-groups]
 dev = [
@@ -28,18 +35,19 @@ test = [
 [tool.uv]
 required-version = ">=0.8"
 default-groups = "all"
+package = true
 
 [tool.uv.workspace]
-members = ["src/*"]
-exclude = ["src/__pycache__"]
+members = ["projects/*"]
+exclude = ["projects/__pycache__"]
 
-#[tool.uv.sources]
-#ackermann-function = {workspace = true}
-#base-64-encoding = {workspace = true}
-#character-encoding = {workspace = true}
-#character-replacer = {workspace = true}
-#collatz = {workspace = true}
-#memoisation = {workspace = true}
+[tool.uv.sources]
+ackermann_function = {workspace = true}
+base_64_encoding = {workspace = true}
+character_encoding = {workspace = true}
+character_replacer = {workspace = true}
+collatz = {workspace = true}
+memoisation = {workspace = true}
 
 [tool.uv.build-backend]
 namespace = true
@@ -51,11 +59,11 @@ envfile.optional = ".env"
 
 [tool.poe.tasks]
 install.shell = """
-    uv sync --all-packages --refresh
+    uv sync --refresh
     uv run pre-commit install --install-hooks
 """
 upgrade.shell = """
-    uv sync --all-packages --refresh --upgrade
+    uv sync --refresh --upgrade
     uv run pre-commit autoupdate
 """
 test = "uv run pytest -vvv"
@@ -82,8 +90,15 @@ shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src"
-testpaths = ["tests"]
+addopts = "--cov=projects"
+testpaths = [
+    "projects/ackermann_function/tests",
+    "projects/base_64_encoding/tests",
+    "projects/character_encoding/tests",
+    "projects/character_replacer/tests",
+    "projects/collatz/tests",
+    "projects/memoisation/tests",
+]
 
 
 [tool.ruff]
@@ -124,7 +139,7 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 # https://github.com/astral-sh/ruff/issues/4368
 [tool.ruff.lint.extend-per-file-ignores]
-"tests/**/*.py" = [
+"projects/*/tests/**/*.py" = [
     "ANN001",   # Missing type annotation for function argument
     "ANN201",   # Missing return type annotation for public function
     "S101",     # Use of `assert` detected
