@@ -67,6 +67,12 @@ upgrade.shell = """
     uv run pre-commit autoupdate
 """
 test = "uv run pytest -vvv"
+add.shell = """
+    uv run -m tools.add ${name}
+"""
+add.args = [
+    {name = "name", positional = true, required = true},
+]
 
 [tool.poe.tasks.lint]
 control.expr = "sys.platform"
