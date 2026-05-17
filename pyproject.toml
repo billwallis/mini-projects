@@ -10,7 +10,7 @@ version = "0.0.0"
 description = "All-in-one repo for mini projects."
 authors = [{name = "billwallis"}]
 readme = "README.md"
-license = {file = "LICENSE"}
+license-files = ["LICENSE"]
 requires-python = ">=3.13"
 dependencies = [
     "ackermann_function",
@@ -27,7 +27,7 @@ dev = [
     "pre-commit>=4.5.1",
 ]
 test = [
-    "pytest>=9.0.2",
+    "pytest>=9.0.3",
     "pytest-cov>=7.0.0",
 ]
 
@@ -98,6 +98,11 @@ shell = """
 [tool.pytest.ini_options]
 addopts = "--cov=projects"
 testpaths = ["projects/*/tests"]
+
+[tool.coverage]
+run.branch = true
+report.fail_under = 80
+report.show_missing = true
 
 
 [tool.ruff]
