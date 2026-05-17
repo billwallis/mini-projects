@@ -97,14 +97,7 @@ shell = """
 
 [tool.pytest.ini_options]
 addopts = "--cov=projects"
-testpaths = [
-    "projects/ackermann_function/tests",
-    "projects/base_64_encoding/tests",
-    "projects/character_encoding/tests",
-    "projects/character_replacer/tests",
-    "projects/collatz/tests",
-    "projects/memoisation/tests",
-]
+testpaths = ["projects/*/tests"]
 
 
 [tool.ruff]
