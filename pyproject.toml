@@ -13,10 +13,11 @@ readme = "README.md"
 license-files = ["LICENSE"]
 requires-python = ">=3.13"
 dependencies = [
-    "ackermann_function",
-    "base_64_encoding",
-    "character_encoding",
-    "character_replacer",
+    "ackermann-function",
+    "base-64-encoding",
+    "binary-and-trinary",
+    "character-encoding",
+    "character-replacer",
     "collatz",
     "memoisation",
 ]
@@ -42,12 +43,13 @@ members = ["projects/*"]
 exclude = ["projects/__pycache__"]
 
 [tool.uv.sources]
-ackermann_function = {workspace = true}
-base_64_encoding = {workspace = true}
-character_encoding = {workspace = true}
-character_replacer = {workspace = true}
-collatz = {workspace = true}
-memoisation = {workspace = true}
+ackermann-function = { workspace = true }
+base-64-encoding = { workspace = true }
+binary-and-trinary = { workspace = true }
+character-encoding = { workspace = true }
+character-replacer = { workspace = true }
+collatz = { workspace = true }
+memoisation = { workspace = true }
 
 [tool.uv.build-backend]
 namespace = true
