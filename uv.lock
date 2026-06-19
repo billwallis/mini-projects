@@ -12,6 +12,7 @@ members = [
     "collatz",
     "memoisation",
     "mini-projects",
+    "morse-code-translator",
 ]
 
 [[package]]
@@ -199,6 +200,7 @@ dependencies = [
     { name = "character-replacer" },
     { name = "collatz" },
     { name = "memoisation" },
+    { name = "morse-code-translator" },
 ]
 
 [package.dev-dependencies]
@@ -220,6 +222,7 @@ requires-dist = [
     { name = "character-replacer", editable = "projects/character_replacer" },
     { name = "collatz", editable = "projects/collatz" },
     { name = "memoisation", editable = "projects/memoisation" },
+    { name = "morse-code-translator", editable = "projects/morse_code_translator" },
 ]
 
 [package.metadata.requires-dev]
@@ -231,6 +234,11 @@ test = [
     { name = "pytest", specifier = ">=9.0.3" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
 ]
+
+[[package]]
+name = "morse-code-translator"
+version = "0.0.0"
+source = { editable = "projects/morse_code_translator" }
 
 [[package]]
 name = "nodeenv"
