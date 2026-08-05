@@ -19,6 +19,7 @@ dependencies = [
     "character-encoding",
     "character-replacer",
     "collatz",
+    "cycle-generator",
     "memoisation",
     "morse-code-translator",
 ]
@@ -50,6 +51,7 @@ binary-and-trinary = { workspace = true }
 character-encoding = { workspace = true }
 character-replacer = { workspace = true }
 collatz = { workspace = true }
+cycle-generator = { workspace = true }
 memoisation = { workspace = true }
 morse-code-translator = { workspace = true }
 
