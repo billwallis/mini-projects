@@ -3,3 +3,5 @@
 [project]
 name = "cycle-generator"
 version = "0.0.0"
+
+scripts.cycle-gen = "cycle_generator.main:main"
