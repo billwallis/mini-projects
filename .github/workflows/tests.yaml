@@ -19,6 +19,9 @@ jobs:
         with:
           python-version-file: pyproject.toml
           cache: "pip"
+          cache-dependency-path: |
+            requirements.txt
+            pyproject.toml
 
       - name: 🔨 Install dependencies
         run: |
