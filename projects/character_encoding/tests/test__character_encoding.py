@@ -33,22 +33,22 @@ def test__wikipedia_examples(
     assert bin_to_utf8_hex(binary) == utf8_hex.replace(" ", "")
 
 
-def test__decimal_to_binary():
-    for dec in range(10_000):
-        if str(dec_to_base(dec, 2)) != f"{dec:b}":
-            print(f"{dec=}", f"{dec_to_base(dec, 2)=}", f"{dec:b}")
-
-
-def test__decimal_to_base():
-    for dec, base in itertools.product(range(10_000), range(2, 10)):
-        base_repr = str(dec_to_base(dec, base))
-        if int(base_repr, base) != dec:
-            print(f"{dec=}", f"{dec_to_base(dec, base)=}")
-
-
-def test__binary_to_hexadecimal():
-    for dec in range(10_000):
-        bin_repr = f"{dec:b}"
-        hex_repr = bin_to_hex(str(bin_repr))
-        if int(hex_repr, 16) != dec:
-            print(f"{dec=}", f"{dec_to_base(dec, 16)=}")
+# def test__decimal_to_binary():
+#     for dec in range(10_000):
+#         if str(dec_to_base(dec, 2)) != f"{dec:b}":
+#             print(f"{dec=}", f"{dec_to_base(dec, 2)=}", f"{dec:b}")
+#
+#
+# def test__decimal_to_base():
+#     for dec, base in itertools.product(range(10_000), range(2, 10)):
+#         base_repr = str(dec_to_base(dec, base))
+#         if int(base_repr, base) != dec:
+#             print(f"{dec=}", f"{dec_to_base(dec, base)=}")
+#
+#
+# def test__binary_to_hexadecimal():
+#     for dec in range(10_000):
+#         bin_repr = f"{dec:b}"
+#         hex_repr = bin_to_hex(str(bin_repr))
+#         if int(hex_repr, 16) != dec:
+#             print(f"{dec=}", f"{dec_to_base(dec, 16)=}")

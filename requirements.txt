@@ -1,0 +1,9 @@
+-e file:./projects/ackermann_function
+-e file:./projects/base_64_encoding
+-e file:./projects/binary_and_trinary
+-e file:./projects/character_encoding
+-e file:./projects/character_replacer
+-e file:./projects/collatz
+-e file:./projects/cycle_generator
+-e file:./projects/memoisation
+-e file:./projects/morse_code_translator
