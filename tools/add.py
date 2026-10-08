@@ -12,10 +12,11 @@ PROJECTS_PATH = HERE.parent / "projects"
 
 
 def _validate_name(name: str) -> None:
-    if re.match(r"^[a-zA-Z0-9_]+$", name):
+    pattern = r"^[a-zA-Z0-9_]+$"
+    if re.match(pattern, name):
         return
 
-    raise ValueError(f"{name!r} is not a valid name")
+    raise ValueError(f"{name!r} is not a valid name, does not match {pattern}")
 
 
 def _snake_to_kebab(snake_name: str) -> str:
