@@ -66,7 +66,22 @@ def add_project(project_name: str) -> int:
             """
         ),
     )
-    _run(f"uv add --workspace {project_name}".split(" "))
+
+    print("TODO: add project to pyproject.toml:tool.coverage.run.source")
+    print(
+        textwrap.indent(
+            textwrap.dedent(
+                f"""\
+                    "projects/{project_name}/src/",
+                    "projects/{project_name}/tests/",
+                """
+            ),
+            prefix="    ",
+        )
+    )
+
+    print("TODO: add project to requirements.txt")
+    print(f"    -e file:./projects/{project_name}")
 
     return SUCCESS
 
