@@ -29,7 +29,7 @@ def _add_file(filename: pathlib.Path, content: str | None = None) -> None:
 
 
 def _run(cmd: Sequence[str]) -> None:
-    subprocess.run(
+    subprocess.run(  # noqa: S603
         args=cmd,
         check=True,  # Raise an exception on non-zero return codes
         capture_output=True,
