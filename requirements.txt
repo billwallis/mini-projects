@@ -7,3 +7,4 @@
 -e file:./projects/cycle_generator
 -e file:./projects/memoisation
 -e file:./projects/morse_code_translator
+-e file:./tools
